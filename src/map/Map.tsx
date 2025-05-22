@@ -827,7 +827,7 @@ export class Map extends Component<MapProps, MapReactState> {
       return
     }
     const { pixelDelta } = this.state
-
+    console.log('handleMouseUp')
     if (this._mouseDown) {
       this._mouseDown = false
 
