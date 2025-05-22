@@ -796,7 +796,7 @@ export class Map extends Component<MapProps, MapReactState> {
         }
       } else {
         this._lastClick = performanceNow()
-
+        console.log('handle mouse down')
         this._mouseDown = true
         this._dragStart = pixel
         this.trackMoveEvents(pixel)
@@ -827,7 +827,13 @@ export class Map extends Component<MapProps, MapReactState> {
       return
     }
     const { pixelDelta } = this.state
-    console.log('handleMouseUp')
+    
+    if (
+      (!event.target || !parentHasClass(event.target as HTMLElement, 'pigeon-click-block')) &&
+      (!pixelDelta || Math.abs(pixelDelta[0]) + Math.abs(pixelDelta[1]) <= CLICK_TOLERANCE)
+    ) {
+      console.log('handleMouseUp')
+    }
     if (this._mouseDown) {
       this._mouseDown = false
 
