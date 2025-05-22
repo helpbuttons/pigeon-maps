@@ -828,15 +828,9 @@ export class Map extends Component<MapProps, MapReactState> {
     }
     const { pixelDelta } = this.state
     
-    if (
-      (!event.target || !parentHasClass(event.target as HTMLElement, 'pigeon-click-block')) &&
-      (!pixelDelta || Math.abs(pixelDelta[0]) + Math.abs(pixelDelta[1]) <= CLICK_TOLERANCE)
-    ) {
-      console.log('handleMouseUp')
-    }
     if (this._mouseDown) {
       this._mouseDown = false
-
+      console.log('handle mouse up')
       const pixel = getMousePixel(this._containerRef, event)
 
       if (
